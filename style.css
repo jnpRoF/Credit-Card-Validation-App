@@ -1,0 +1,270 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #1b344f;
+}
+.page_cont {
+  height: 520px;
+  width: 420px;
+  margin: 70px auto;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.card_body {
+  padding: 10px;
+}
+.card_face {
+  position: relative;
+  height: 240px;
+}
+.card_front {
+  background-color: #1b344f;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 1;
+  transition: 2s;
+}
+
+.front-rotate {
+  animation: frontRotate 2s forwards;
+  backface-visibility: hidden;
+  /* transition: 2s; */
+}
+.back-rotate {
+  animation: backRotate 2s forwards;
+  /* transition: 2s; */
+  /* backface-visibility: visible; */
+}
+.card_back_cont {
+  background-color: #1b344f;
+  height: 100%;
+  border-radius: 10px;
+  position: absolute;
+  width: 100%;
+  transition: 2s;
+  /* backface-visibility: hidden; */
+  /* transform: rotateY(180deg); */
+  /* animation: rotate 2s; */
+}
+@keyframes frontRotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+@keyframes backRotate {
+  from {
+    transform: rotateY(180deg);
+  }
+
+  to {
+    transform: rotateY(0deg);
+  }
+}
+/* .card_cont:hover {
+  transform: rotateX("180");
+  transform-style: preserve-3d;
+  transition: 2s;
+  background-color: #fff;
+} */
+.card_front:hover .card_back_cont {
+  background-color: aquamarine;
+}
+.card_info {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5px;
+}
+.card_type_cont {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 5px;
+}
+.card_types {
+  display: flex;
+  justify-content: space-between;
+}
+.card_chip {
+  width: 50px;
+  height: 50px;
+}
+.card_type,
+.card_type2 {
+  width: 90px;
+  height: 60px;
+  display: none;
+}
+.cholder {
+  color: #fff;
+  margin-bottom: 6px;
+}
+.card_display {
+  display: flex;
+  justify-content: center;
+  font-size: 33px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #d59516;
+}
+.card_num_cont {
+  display: flex;
+  justify-content: space-between;
+}
+.inp,
+.inp2,
+.cvv_inp,
+select {
+  width: 75px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  padding: 5px;
+  text-align: center;
+}
+.cvv_inp,
+select {
+  width: 90px;
+}
+.inp2 {
+  width: 100%;
+  border-radius: 5px;
+  text-align: start;
+}
+.card_details_cont {
+  padding: 15px 0;
+}
+.desc {
+  color: #666;
+  padding-bottom: 7px;
+}
+.cnumber,
+.cname,
+.last_sec {
+  margin-bottom: 15px;
+}
+.last_sec {
+  display: flex;
+  justify-content: space-between;
+}
+.black_strip {
+  height: 50px;
+  width: 100%;
+  background-color: #000;
+  margin-top: 25px;
+}
+.white_strip_cont {
+  text-align: end;
+  font-size: 14px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #a79898;
+  display: flex;
+  justify-content: center;
+}
+.overall_wrap {
+  width: 90%;
+}
+.text {
+  padding-right: 10px;
+}
+.white_strip {
+  height: 34px;
+  background-color: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-style: italic;
+}
+.card_back {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 57%;
+}
+.cholder_exp {
+  text-align: end;
+  color: #d59516;
+}
+.cholder_name {
+  color: #d59516;
+}
+.valid_btn_cont {
+  display: flex;
+  justify-content: center;
+}
+.valid_btn {
+  height: 35px;
+  border: unset;
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  width: 90%;
+  cursor: pointer;
+  background-color: #1b344f;
+  border-radius: 5px;
+  opacity: 0.8;
+}
+.valid_btn:hover {
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .page_cont {
+    margin: 19px auto;
+  }
+}
+@media screen and (max-width: 450px) {
+  .page_cont {
+    width: 100%;
+    border-radius: unset;
+  }
+  .inp {
+    width: 19%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  select,
+  .cvv_inp {
+    height: 25px;
+    width: 75px;
+    font-size: 10px;
+  }
+  .card_face {
+    height: 185px;
+  }
+  .card_body {
+    padding: unset;
+  }
+  .card_details_cont {
+    padding: 10px;
+  }
+  .card_front,
+  .card_back_cont {
+    border-radius: unset;
+  }
+  .cholder {
+    font-size: 12px;
+  }
+  .valid_btn_cont {
+    margin: 35px 0;
+  }
+  .card_type_cont {
+    padding: 0px 5px;
+  }
+  .card_display {
+    font-size: 25px;
+  }
+}
