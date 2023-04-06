@@ -10,7 +10,7 @@ const cHolderExpire = document.querySelector(".cholder_exp");
 const validBtn = document.querySelector(".valid_btn");
 const cardType = document.querySelector(".card_type");
 const cardType2 = document.querySelector(".card_type2");
-let cardNumber = [];
+// let cardNumber = [];
 const state = {
   firstInput: null,
   secondInput: null,
@@ -166,8 +166,10 @@ const delComplete = (setInputNumber, i) => {
 const displayCardHolderDetails = (cHolderDetailsCont, CARDHOLDERDETAILS) => {
   cHolderDetailsCont.innerHTML = CARDHOLDERDETAILS;
 };
-cardHolderNameInput.addEventListener("input", () => {
+cardHolderNameInput.addEventListener("input", (e) => {
   state.CARDHOLDERNAME = cardHolderNameInput.value;
+  console.log(cHolderName.length);
+  console.log(e.target.maxLength);
   displayCardHolderDetails(cHolderName, state.CARDHOLDERNAME);
 });
 cvvInput.addEventListener("input", () => {
@@ -241,12 +243,12 @@ const ccNumber = (digits, weight = 1, productSum = 0) => {
 };
 
 validBtn.addEventListener("click", () => {
-  if (!state.CARDNUMBER.length) {
+  if (!state.CARDNUMBER.length || +state.CARDNUMBER.join("") === 0) {
     alert("Please input a number.");
   } else {
     const isValid = ccNumber(+state.CARDNUMBER.join(""));
     state.isValid = isValid;
     handleValidity(state.isValid);
-    // console.log(isValid);
+    console.log(+state.CARDNUMBER.join(""));
   }
 });

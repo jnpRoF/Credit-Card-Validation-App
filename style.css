@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* border: 1px solid; */
 }
 body {
   background-color: #1b344f;
@@ -84,6 +85,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px 5px;
+  width: 100%;
 }
 .card_type_cont {
   display: flex;
@@ -200,6 +202,11 @@ select {
 }
 .cholder_name {
   color: #d59516;
+  height: 20px;
+}
+.cholder_cont{
+   width: 80%;
+    overflow: hidden;
 }
 .valid_btn_cont {
   display: flex;
