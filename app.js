@@ -104,26 +104,17 @@ const handleValidity = ($valid) => {
     : (cardDisplay.innerHTML = "NOT VALID");
 };
 const renderValue = (e) => {
-        e.target.value = state.value
-}
-      
+  e.target.value = state.value;
+};
+
 allInputs.forEach((eachInput) => {
   eachInput.addEventListener("input", (e) => {
     if (e.target.value !== "") {
       let num = e.target.value;
-      console.log(typeof num);
       //allow only numbers
-      console.log(num);
       if (num % num == 0 || num == 0) {
-        state.value = num
-      } else {
-        state.value = null
-      }
-      console.log(state.value);
-      
-      renderValue(e)
-      if (num % num === 0 || num == 0) {
-        //0 % 0 !== 0
+        // console.log("WORKED");
+        state.value = num;
         if (document.activeElement) {
           const currInputIndex = allInputs.indexOf(document.activeElement);
           const inputNumber = (setInputNumber, i) => {
@@ -160,7 +151,12 @@ allInputs.forEach((eachInput) => {
 
         if (allInputs[allInputs.length - 1].maxLength) {
         }
+      } else {
+        state.value = null;
+        console.log("empty");
       }
+
+      renderValue(e);
     } else {
       delComplete(setFirstInputNumber, 0);
       delComplete(setSecondInputNumber, 1);

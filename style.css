@@ -204,9 +204,9 @@ select {
   color: #d59516;
   height: 20px;
 }
-.cholder_cont{
-   width: 80%;
-    overflow: hidden;
+.cholder_cont {
+  width: 80%;
+  overflow: hidden;
 }
 .valid_btn_cont {
   display: flex;
