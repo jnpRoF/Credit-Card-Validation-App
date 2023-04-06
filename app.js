@@ -28,7 +28,9 @@ const state = {
 const focusNext = () => {
   const currInput = document.activeElement;
   const currInputIndex = allInputs.indexOf(currInput);
-  const nextInputIndex = (currInputIndex + 1) % allInputs.length;
+  currInputIndex === allInputs.length - 1
+    ? (nextInputIndex = allInputs.length - 1)
+    : (nextInputIndex = currInputIndex + 1);
   const input = allInputs[nextInputIndex];
   input.focus();
 };
@@ -36,11 +38,11 @@ const focusBack = () => {
   const currInput = document.activeElement;
   const currInputIndex = allInputs.indexOf(currInput);
   currInputIndex === 0
-    ? (prevInputIndex = allInputs.length - 1)
-    : (prevInputIndex = (currInputIndex - 1) % allInputs.length);
-
+    ? (prevInputIndex = 0)
+    : (prevInputIndex = currInputIndex - 1);
   const input = allInputs[prevInputIndex];
   input.focus();
+  console.log(currInputIndex);
 };
 const setFirstInputNumber = (num) => {
   state.firstInput = num;
@@ -108,7 +110,7 @@ const renderValue = (e) => {
 };
 
 allInputs.forEach((eachInput) => {
-  eachInput.addEventListener("input", (e) => {
+  eachInput.addEventListener("keyup", (e) => {
     if (e.target.value !== "") {
       let num = e.target.value;
       //allow only numbers
@@ -175,6 +177,9 @@ const delComplete = (setInputNumber, i) => {
     setInputNumber("");
     displayCardNumber();
   }
+  // if (currInputIndex === i) {
+
+  // }
 };
 const displayCardHolderDetails = (cHolderDetailsCont, CARDHOLDERDETAILS) => {
   cHolderDetailsCont.innerHTML = CARDHOLDERDETAILS;
