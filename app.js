@@ -12,6 +12,7 @@ const cardType = document.querySelector(".card_type");
 const cardType2 = document.querySelector(".card_type2");
 // let cardNumber = [];
 const state = {
+  value: null,
   firstInput: null,
   secondInput: null,
   thirdInput: null,
@@ -50,6 +51,7 @@ const setFirstInputNumber = (num) => {
     state.fourthInput,
     state.fifthInput,
   ];
+  console.log(state.firstInput);
 };
 const setSecondInputNumber = (num) => {
   state.secondInput = num;
@@ -101,11 +103,25 @@ const handleValidity = ($valid) => {
     ? (cardDisplay.innerHTML = "VALID")
     : (cardDisplay.innerHTML = "NOT VALID");
 };
+const renderValue = (e) => {
+        e.target.value = state.value
+}
+      
 allInputs.forEach((eachInput) => {
   eachInput.addEventListener("input", (e) => {
     if (e.target.value !== "") {
       let num = e.target.value;
+      console.log(typeof num);
       //allow only numbers
+      console.log(num);
+      if (num % num == 0 || num == 0) {
+        state.value = num
+      } else {
+        state.value = null
+      }
+      console.log(state.value);
+      
+      renderValue(e)
       if (num % num === 0 || num == 0) {
         //0 % 0 !== 0
         if (document.activeElement) {
@@ -152,6 +168,7 @@ allInputs.forEach((eachInput) => {
       delComplete(setFourthInputNumber, 3);
       delComplete(setFifthInputNumber, 4);
       focusBack();
+      console.log("ala");
     }
   });
 });
