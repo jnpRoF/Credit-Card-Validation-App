@@ -106,16 +106,23 @@ const handleValidity = ($valid) => {
     : (cardDisplay.innerHTML = "NOT VALID");
 };
 const renderValue = (e) => {
+  console.log(e.target.value, state.value);
   e.target.value = state.value;
+  console.log(typeof e.target.value, typeof state.value);
 };
 
 allInputs.forEach((eachInput) => {
-  eachInput.addEventListener("keyup", (e) => {
+  eachInput.addEventListener("input", (e) => {
     if (e.target.value !== "") {
       let num = e.target.value;
       //allow only numbers
-      if (num % num == 0 || num == 0) {
-        // console.log("WORKED");
+      // if (+num !== "0") {
+      //   console.log("works");
+      // }
+      // num % num == 0 || num == 0
+
+      if (/^[0-9]+$/.test(num)) {
+        console.log("WORKED");
         state.value = num;
         if (document.activeElement) {
           const currInputIndex = allInputs.indexOf(document.activeElement);
@@ -153,12 +160,15 @@ allInputs.forEach((eachInput) => {
 
         if (allInputs[allInputs.length - 1].maxLength) {
         }
+        console.log(state.value, "numbers");
       } else {
-        state.value = null;
-        console.log("empty");
+        state.value = num.slice(0,num.length - 1)
+        console.log(state.value, "letters");
+        // return;
+        // console.log("empty");
       }
-
       renderValue(e);
+
     } else {
       delComplete(setFirstInputNumber, 0);
       delComplete(setSecondInputNumber, 1);
@@ -270,3 +280,24 @@ validBtn.addEventListener("click", () => {
     console.log(+state.CARDNUMBER.join(""));
   }
 });
+
+// is nesting ifs allowed in a clean code or is there a better way
+// num % num == 0 && e.data.length != 0 || num === 0
+
+// const isInputValid = (input)=>{
+//     let inputWithoutSpaces = input.replace(/\s/g,"")
+//     return /^\d+$/.test(inputWithoutSpaces)
+
+// }
+
+// let userInput = prompt("Enter a number")
+
+//     if(isInputValid(userInput)){
+//         console.log("Valid Input!")
+// }else{
+//     console.log("Invalid Input. Only numbers are allowed")
+//     }
+
+// I learnt regex in minutes!!!!!
+
+// use guard clause
