@@ -200,9 +200,20 @@ cardHolderNameInput.addEventListener("input", (e) => {
   console.log(e.target.maxLength);
   displayCardHolderDetails(cHolderName, state.CARDHOLDERNAME);
 });
+
+const renderCVV = (e) => {
+  e.value = state.CVV; 
+}
 cvvInput.addEventListener("input", () => {
-  state.CVV = cvvInput.value;
-  displayCardHolderDetails(cvvDisplay, state.CVV);
+  if (/^[0-9]+$/.test(cvvInput.value)) {
+    state.CVV = cvvInput.value;
+    displayCardHolderDetails(cvvDisplay, state.CVV);
+  }
+  else {
+    state.CVV = cvvInput.value.slice(0, cvvInput.value.length - 1);
+    console.log("wrong",state.CVV,cvvInput - 1,cvvInput)
+  }
+  renderCVV(cvvInput);
 });
 
 const cardFront = document.querySelector(".card_front");
