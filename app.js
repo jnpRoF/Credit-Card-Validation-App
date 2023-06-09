@@ -169,6 +169,7 @@ allInputs.forEach((eachInput) => {
       }
       renderValue(e);
     } else {
+      
       delComplete(setFirstInputNumber, 0);
       delComplete(setSecondInputNumber, 1);
       delComplete(setThirdInputNumber, 2);
@@ -186,9 +187,11 @@ const delComplete = (setInputNumber, i) => {
     setInputNumber("");
     displayCardNumber();
   }
-  // if (currInputIndex === i) {
+  if (currInputIndex === 0) {
 
-  // }
+  cardType.style.display = "none";
+  cardType2.style.display = "none";
+  }
 };
 const displayCardHolderDetails = (cHolderDetailsCont, CARDHOLDERDETAILS) => {
   cHolderDetailsCont.innerHTML = CARDHOLDERDETAILS;
