@@ -318,7 +318,10 @@ validBtn.addEventListener("click", () => {
   if (
     !state.CARDNUMBER.length ||
     +state.CARDNUMBER.join("") === 0 ||
-    !cvvInput.value
+    !cvvInput.value ||
+    !cardHolderNameInput.value ||
+    !selectMonth.value ||
+    !selectYear.value
   ) {
     alert("Please fill all inputs.");
   } else {

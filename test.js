@@ -28,3 +28,4 @@ if (3 < 5) {
 // /^([A-Z | a-z])+$/; or /^([A-Z] | [a-z])+$/ or
 
 // I think Stephen said don't change state directly only when you want to use it and i'm happy i remember even when it's been so long
+// funny how OR can act as AND
