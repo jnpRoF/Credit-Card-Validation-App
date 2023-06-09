@@ -169,7 +169,6 @@ allInputs.forEach((eachInput) => {
       }
       renderValue(e);
     } else {
-      
       delComplete(setFirstInputNumber, 0);
       delComplete(setSecondInputNumber, 1);
       delComplete(setThirdInputNumber, 2);
@@ -188,9 +187,8 @@ const delComplete = (setInputNumber, i) => {
     displayCardNumber();
   }
   if (currInputIndex === 0) {
-
-  cardType.style.display = "none";
-  cardType2.style.display = "none";
+    cardType.style.display = "none";
+    cardType2.style.display = "none";
   }
 };
 const displayCardHolderDetails = (cHolderDetailsCont, CARDHOLDERDETAILS) => {
@@ -334,8 +332,8 @@ validBtn.addEventListener("click", () => {
   } else {
     const isValid = ccNumber(+state.CARDNUMBER.join(""));
     state.isValid = isValid;
-    // cardBack.classList.remove("front-rotate");
-    // cardBack.classList.remove("back-rotate");
+    cardFront.classList.remove("front-rotate");
+    cardBack.classList.remove("back-rotate");
     handleValidity(state.isValid);
     console.log(+state.CARDNUMBER.join(""));
   }
