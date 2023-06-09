@@ -197,6 +197,13 @@ cardHolderNameInput.addEventListener("input", (e) => {
   if (cardHolderNameInput.value !== "") {
     if (/^([A-Z | a-z])+$/.test(cardHolderNameInput.value)) {
       state.CARDHOLDERNAME = cardHolderNameInput.value;
+      if (state.CARDHOLDERNAME.length >= 26) {
+        cHolderName.style.fontSize = "13px";
+        console.log("gtyy");
+      } else {
+        console.log("gt");
+        cHolderName.style.fontSize = "18px";
+      }
       displayCardHolderDetails(cHolderName, state.CARDHOLDERNAME.toUpperCase());
       console.log("righ");
     } else {
@@ -207,10 +214,9 @@ cardHolderNameInput.addEventListener("input", (e) => {
       console.log("wro");
     }
     renderCARDHOLDERNAME(cardHolderNameInput);
-  }
-  else {
-     state.CARDHOLDERNAME = "";
-     displayCardHolderDetails(cHolderName, state.CARDHOLDERNAME);
+  } else {
+    state.CARDHOLDERNAME = "";
+    displayCardHolderDetails(cHolderName, state.CARDHOLDERNAME);
   }
   // console.log(cHolderName.length);
   // console.log(e.target.maxLength);
@@ -235,17 +241,15 @@ cvvInput.addEventListener("input", () => {
       // why am i even rendering
     }
     renderCVV(cvvInput);
-    
-  }
-  else {
-  //  const delComplete = (setInputNumber, i) => {
-  //    const currInputIndex = allInputs.indexOf(document.activeElement);
-  //    if (currInputIndex === i) {
-  //      displayCardNumber();
-  //     }
-  //   };
-     state.CVV = "";
-    displayCardHolderDetails(cvvDisplay,state.CVV); //to make the cvv display empty
+  } else {
+    //  const delComplete = (setInputNumber, i) => {
+    //    const currInputIndex = allInputs.indexOf(document.activeElement);
+    //    if (currInputIndex === i) {
+    //      displayCardNumber();
+    //     }
+    //   };
+    state.CVV = "";
+    displayCardHolderDetails(cvvDisplay, state.CVV); //to make the cvv display empty
   }
 });
 
@@ -327,6 +331,8 @@ validBtn.addEventListener("click", () => {
   } else {
     const isValid = ccNumber(+state.CARDNUMBER.join(""));
     state.isValid = isValid;
+    // cardBack.classList.remove("front-rotate");
+    // cardBack.classList.remove("back-rotate");
     handleValidity(state.isValid);
     console.log(+state.CARDNUMBER.join(""));
   }
