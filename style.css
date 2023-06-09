@@ -206,7 +206,7 @@ select {
 }
 .cholder_cont {
   width: 80%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .valid_btn_cont {
   display: flex;

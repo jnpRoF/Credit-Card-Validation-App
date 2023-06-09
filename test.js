@@ -24,3 +24,7 @@ if (3 < 5) {
 
 
 // it is because another if is running and changing the value of state.value
+
+// /^([A-Z | a-z])+$/; or /^([A-Z] | [a-z])+$/ or
+
+// I think Stephen said don't change state directly only when you want to use it and i'm happy i remember even when it's been so long

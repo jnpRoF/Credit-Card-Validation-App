@@ -162,13 +162,12 @@ allInputs.forEach((eachInput) => {
         }
         console.log(state.value, "numbers");
       } else {
-        state.value = num.slice(0,num.length - 1)
+        state.value = num.slice(0, num.length - 1);
         console.log(state.value, "letters");
         // return;
         // console.log("empty");
       }
       renderValue(e);
-
     } else {
       delComplete(setFirstInputNumber, 0);
       delComplete(setSecondInputNumber, 1);
@@ -195,25 +194,59 @@ const displayCardHolderDetails = (cHolderDetailsCont, CARDHOLDERDETAILS) => {
   cHolderDetailsCont.innerHTML = CARDHOLDERDETAILS;
 };
 cardHolderNameInput.addEventListener("input", (e) => {
-  state.CARDHOLDERNAME = cardHolderNameInput.value;
-  console.log(cHolderName.length);
-  console.log(e.target.maxLength);
-  displayCardHolderDetails(cHolderName, state.CARDHOLDERNAME);
-});
-
-const renderCVV = (e) => {
-  e.value = state.CVV; 
-}
-cvvInput.addEventListener("input", () => {
-  if (/^[0-9]+$/.test(cvvInput.value)) {
-    state.CVV = cvvInput.value;
-    displayCardHolderDetails(cvvDisplay, state.CVV);
+  if (cardHolderNameInput.value !== "") {
+    if (/^([A-Z | a-z])+$/.test(cardHolderNameInput.value)) {
+      state.CARDHOLDERNAME = cardHolderNameInput.value;
+      displayCardHolderDetails(cHolderName, state.CARDHOLDERNAME.toUpperCase());
+      console.log("righ");
+    } else {
+      state.CARDHOLDERNAME = cardHolderNameInput.value.slice(
+        0,
+        cardHolderNameInput.value.length - 1
+      );
+      console.log("wro");
+    }
+    renderCARDHOLDERNAME(cardHolderNameInput);
   }
   else {
-    state.CVV = cvvInput.value.slice(0, cvvInput.value.length - 1);
-    console.log("wrong",state.CVV,cvvInput - 1,cvvInput)
+     state.CARDHOLDERNAME = "";
+     displayCardHolderDetails(cHolderName, state.CARDHOLDERNAME);
   }
-  renderCVV(cvvInput);
+  // console.log(cHolderName.length);
+  // console.log(e.target.maxLength);
+});
+
+const renderCARDHOLDERNAME = (e) => {
+  e.value = state.CARDHOLDERNAME;
+};
+const renderCVV = (e) => {
+  e.value = state.CVV;
+};
+cvvInput.addEventListener("input", () => {
+  if (cvvInput.value !== "") {
+    let g = cvvInput.value;
+    if (/^[0-9]+$/.test(cvvInput.value)) {
+      state.CVV = g;
+      displayCardHolderDetails(cvvDisplay, state.CVV);
+    } else {
+      console.log(g);
+      state.CVV = g.slice(0, g.length - 1);
+      // console.log("wrong", state.CVV, cvvInput - 1, cvvInput);
+      // why am i even rendering
+    }
+    renderCVV(cvvInput);
+    
+  }
+  else {
+  //  const delComplete = (setInputNumber, i) => {
+  //    const currInputIndex = allInputs.indexOf(document.activeElement);
+  //    if (currInputIndex === i) {
+  //      displayCardNumber();
+  //     }
+  //   };
+     state.CVV = "";
+    displayCardHolderDetails(cvvDisplay,state.CVV); //to make the cvv display empty
+  }
 });
 
 const cardFront = document.querySelector(".card_front");
@@ -282,7 +315,11 @@ const ccNumber = (digits, weight = 1, productSum = 0) => {
 };
 
 validBtn.addEventListener("click", () => {
-  if (!state.CARDNUMBER.length || +state.CARDNUMBER.join("") === 0 || !cvvInput.value) {
+  if (
+    !state.CARDNUMBER.length ||
+    +state.CARDNUMBER.join("") === 0 ||
+    !cvvInput.value
+  ) {
     alert("Please fill all inputs.");
   } else {
     const isValid = ccNumber(+state.CARDNUMBER.join(""));
