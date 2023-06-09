@@ -283,7 +283,7 @@ const ccNumber = (digits, weight = 1, productSum = 0) => {
 
 validBtn.addEventListener("click", () => {
   if (!state.CARDNUMBER.length || +state.CARDNUMBER.join("") === 0 || !cvvInput.value) {
-    alert("Please input a number.");
+    alert("Please fill all inputs.");
   } else {
     const isValid = ccNumber(+state.CARDNUMBER.join(""));
     state.isValid = isValid;
