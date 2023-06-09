@@ -282,7 +282,7 @@ const ccNumber = (digits, weight = 1, productSum = 0) => {
 };
 
 validBtn.addEventListener("click", () => {
-  if (!state.CARDNUMBER.length || +state.CARDNUMBER.join("") === 0) {
+  if (!state.CARDNUMBER.length || +state.CARDNUMBER.join("") === 0 || !cvvInput.value) {
     alert("Please input a number.");
   } else {
     const isValid = ccNumber(+state.CARDNUMBER.join(""));
