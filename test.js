@@ -29,4 +29,23 @@ if (3 < 5) {
 // I think Stephen said don't change state directly only when you want to use it and i'm happy i remember even when it's been so long
 // funny how OR can act as AND
 
+// is nesting ifs allowed in a clean code or is there a better way
+// num % num == 0 && e.data.length != 0 || num === 0
 
+// const isInputValid = (input)=>{
+//     let inputWithoutSpaces = input.replace(/\s/g,"")
+//     return /^\d+$/.test(inputWithoutSpaces)
+
+// }
+
+// let userInput = prompt("Enter a number")
+
+//     if(isInputValid(userInput)){
+//         console.log("Valid Input!")
+// }else{
+//     console.log("Invalid Input. Only numbers are allowed")
+//     }
+
+// I learnt regex in minutes!!!!!
+
+// use guard clause

@@ -10,7 +10,6 @@ const cHolderExpire = document.querySelector(".cholder_exp");
 const validBtn = document.querySelector(".valid_btn");
 const cardType = document.querySelector(".card_type");
 const cardType2 = document.querySelector(".card_type2");
-// let cardNumber = [];
 const state = {
   value: null,
   firstInput: null,
@@ -25,6 +24,7 @@ const state = {
   expYear: "",
   isValid: null,
 };
+
 const focusNext = () => {
   const currInput = document.activeElement;
   const currInputIndex = allInputs.indexOf(currInput);
@@ -42,7 +42,6 @@ const focusBack = () => {
     : (prevInputIndex = currInputIndex - 1);
   const input = allInputs[prevInputIndex];
   input.focus();
-  console.log(currInputIndex);
 };
 const setFirstInputNumber = (num) => {
   state.firstInput = num;
@@ -53,7 +52,6 @@ const setFirstInputNumber = (num) => {
     state.fourthInput,
     state.fifthInput,
   ];
-  console.log(state.firstInput);
 };
 const setSecondInputNumber = (num) => {
   state.secondInput = num;
@@ -95,14 +93,11 @@ const setFifthInputNumber = (num) => {
     state.fifthInput,
   ];
 };
-
 const displayCardNumber = () => {
   cardDisplay.innerHTML = state.CARDNUMBER.join(" ");
 };
 
 const handleValidity = ($valid) => {
-  console.log(selectYear.value, selectYear.value >= "2005");
-
   // if (selectYear.value <= "2005") {
   //     cardDisplay.innerHTML = "Card is Expired!"
   //   } else {
@@ -112,7 +107,6 @@ const handleValidity = ($valid) => {
   //     else {
   //       cardDisplay.innerHTML = "NOT VALID"
   //     }
-
   // }
 
   selectYear.value <= "2005"
@@ -122,9 +116,7 @@ const handleValidity = ($valid) => {
     : (cardDisplay.innerHTML = "NOT VALID");
 };
 const renderValue = (e) => {
-  console.log(e.target.value, state.value);
   e.target.value = state.value;
-  console.log(typeof e.target.value, typeof state.value);
 };
 
 allInputs.forEach((eachInput) => {
@@ -132,11 +124,6 @@ allInputs.forEach((eachInput) => {
     if (e.target.value !== "") {
       let num = e.target.value;
       //allow only numbers
-      // if (+num !== "0") {
-      //   console.log("works");
-      // }
-      // num % num == 0 || num == 0
-
       if (/^[0-9]+$/.test(num)) {
         console.log("WORKED");
         state.value = num;
@@ -179,9 +166,6 @@ allInputs.forEach((eachInput) => {
         console.log(state.value, "numbers");
       } else {
         state.value = num.slice(0, num.length - 1);
-        console.log(state.value, "letters");
-        // return;
-        // console.log("empty");
       }
       renderValue(e);
     } else {
@@ -191,7 +175,6 @@ allInputs.forEach((eachInput) => {
       delComplete(setFourthInputNumber, 3);
       delComplete(setFifthInputNumber, 4);
       focusBack();
-      console.log("ala");
     }
   });
 });
@@ -216,27 +199,21 @@ cardHolderNameInput.addEventListener("input", (e) => {
       state.CARDHOLDERNAME = cardHolderNameInput.value;
       if (state.CARDHOLDERNAME.length >= 26) {
         cHolderName.style.fontSize = "13px";
-        console.log("gtyy");
       } else {
-        console.log("gt");
         cHolderName.style.fontSize = "18px";
       }
       displayCardHolderDetails(cHolderName, state.CARDHOLDERNAME.toUpperCase());
-      console.log("righ");
     } else {
       state.CARDHOLDERNAME = cardHolderNameInput.value.slice(
         0,
         cardHolderNameInput.value.length - 1
       );
-      console.log("wro");
     }
     renderCARDHOLDERNAME(cardHolderNameInput);
   } else {
     state.CARDHOLDERNAME = "";
     displayCardHolderDetails(cHolderName, state.CARDHOLDERNAME);
   }
-  // console.log(cHolderName.length);
-  // console.log(e.target.maxLength);
 });
 
 const renderCARDHOLDERNAME = (e) => {
@@ -252,19 +229,10 @@ cvvInput.addEventListener("input", () => {
       state.CVV = g;
       displayCardHolderDetails(cvvDisplay, state.CVV);
     } else {
-      console.log(g);
       state.CVV = g.slice(0, g.length - 1);
-      // console.log("wrong", state.CVV, cvvInput - 1, cvvInput);
-      // why am i even rendering
     }
     renderCVV(cvvInput);
   } else {
-    //  const delComplete = (setInputNumber, i) => {
-    //    const currInputIndex = allInputs.indexOf(document.activeElement);
-    //    if (currInputIndex === i) {
-    //      displayCardNumber();
-    //     }
-    //   };
     state.CVV = "";
     displayCardHolderDetails(cvvDisplay, state.CVV); //to make the cvv display empty
   }
@@ -351,27 +319,7 @@ validBtn.addEventListener("click", () => {
     cardFront.classList.remove("front-rotate");
     cardBack.classList.remove("back-rotate");
     handleValidity(state.isValid);
-    console.log(+state.CARDNUMBER.join(""));
   }
 });
 
-// is nesting ifs allowed in a clean code or is there a better way
-// num % num == 0 && e.data.length != 0 || num === 0
 
-// const isInputValid = (input)=>{
-//     let inputWithoutSpaces = input.replace(/\s/g,"")
-//     return /^\d+$/.test(inputWithoutSpaces)
-
-// }
-
-// let userInput = prompt("Enter a number")
-
-//     if(isInputValid(userInput)){
-//         console.log("Valid Input!")
-// }else{
-//     console.log("Invalid Input. Only numbers are allowed")
-//     }
-
-// I learnt regex in minutes!!!!!
-
-// use guard clause

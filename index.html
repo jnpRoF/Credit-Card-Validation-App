@@ -120,7 +120,8 @@
             </div>
             <div class="cvv_cont">
               <p class="desc">CVV</p>
-              <input type="text" class="cvv_inp" maxlength="3" />
+              <input type="text" class="cvv_inp" maxlength="3" inputmode="numeric" pattern="[0-9]*"/>
+              <!-- <input type="text" class="cvv_inp" maxlength="3" /> -->
             </div>
           </div>
           <div class="valid_btn_cont">
@@ -129,8 +130,6 @@
         </div>
       </div>
     </div>
-
-   
     <script src="./test.js"></script>
   </body>
 </html>
