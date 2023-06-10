@@ -101,7 +101,21 @@ const displayCardNumber = () => {
 };
 
 const handleValidity = ($valid) => {
-  state.expYear <= "2005"
+  console.log(selectYear.value, selectYear.value >= "2005");
+
+  // if (selectYear.value <= "2005") {
+  //     cardDisplay.innerHTML = "Card is Expired!"
+  //   } else {
+  //     if ($valid === true) {
+  //       cardDisplay.innerHTML = "VALID"
+  //     }
+  //     else {
+  //       cardDisplay.innerHTML = "NOT VALID"
+  //     }
+
+  // }
+
+  selectYear.value <= "2005"
     ? (cardDisplay.innerHTML = "Card is Expired!")
     : $valid === true
     ? (cardDisplay.innerHTML = "VALID")
